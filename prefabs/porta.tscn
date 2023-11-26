@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bod7rltby8k0x"]
+
+[ext_resource type="Texture2D" uid="uid://f6a4crv8g8e1" path="res://Assets/Tileset/Johhan/porta.png" id="1_3owd2"]
+[ext_resource type="Script" path="res://scripts/porta.gd" id="1_gedjg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e60xt"]
+size = Vector2(16, 32)
+
+[node name="Porta" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_gedjg")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_3owd2")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e60xt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

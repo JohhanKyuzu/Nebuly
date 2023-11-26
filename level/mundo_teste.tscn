@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://d040kkagxjial"]
+
+[ext_resource type="Script" path="res://scripts/world_01.gd" id="1_foejt"]
+[ext_resource type="PackedScene" uid="uid://cn8qternnk32j" path="res://Actors/nebuly.tscn" id="1_jg1gh"]
+[ext_resource type="PackedScene" uid="uid://c5yq4dagt1xjv" path="res://tilemaps/tile_map_teste.tscn" id="2_bh20i"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_awqra"]
+[ext_resource type="PackedScene" uid="uid://d2vpsjoii6lr" path="res://Actors/bushly.tscn" id="5_830rc"]
+[ext_resource type="Texture2D" uid="uid://btjqwhea3g1o" path="res://Assets/Tileset/Johhan/ceu.png" id="6_txn70"]
+[ext_resource type="Texture2D" uid="uid://7c2s6efm3f2g" path="res://Assets/Tileset/Johhan/nuvens.png" id="7_uqo22"]
+[ext_resource type="Texture2D" uid="uid://bwvj1idhboi8v" path="res://Assets/Tileset/Johhan/montanhas.png" id="8_hio4i"]
+[ext_resource type="Texture2D" uid="uid://coms7nyeks4oa" path="res://Assets/Tileset/Johhan/montanhas2.png" id="9_ahyhu"]
+[ext_resource type="Texture2D" uid="uid://u0qtl1by6lfq" path="res://Assets/Tileset/Johhan/nuvens2.png" id="10_o7ruf"]
+[ext_resource type="PackedScene" uid="uid://ljl4ktfcy7bi" path="res://prefabs/bloco_on_off.tscn" id="11_ky0sk"]
+
+[node name="MundoTeste" type="Node2D"]
+script = ExtResource("1_foejt")
+
+[node name="TileMap" parent="." instance=ExtResource("2_bh20i")]
+layer_0/tile_data = PackedInt32Array(-131070, 65536, 1, -131069, 65536, 1, -131068, 65536, 1, -131067, 65536, 1, -131066, 65536, 1, -131065, 65536, 1, -131064, 65536, 1, -131063, 65536, 1, -131062, 65536, 1, -131061, 65536, 1, -131060, 65536, 1, -131059, 65536, 1, -131071, 65536, 1, -131072, 65536, 1, -131058, 65536, 1, -131057, 65536, 1, -131056, 65536, 1, -131055, 65536, 1, -131054, 65536, 1, -131053, 65536, 1, -131052, 65536, 1, -131051, 65536, 1, -131050, 65536, 1, -131049, 65536, 1, -131048, 65536, 1, -131047, 65536, 1, -131046, 65536, 1, -131045, 65536, 1, -131044, 65536, 1, -131043, 65536, 1, -131042, 65536, 1, -131041, 65536, 1, -131040, 65536, 1, -131039, 65536, 1, -196609, 131072, 1, -262145, 131072, 1, -327681, 131072, 1, -393217, 131072, 1, -458753, 131072, 1, -524289, 131072, 1, -589825, 131072, 1, -1048577, 131072, 1, -1114113, 131072, 1, -1179649, 131072, 1, -1245185, 131072, 1, -1310721, 131072, 1, -983041, 131072, 1, -917505, 131072, 1, -851969, 131072, 1, -786433, 131072, 1, -720897, 131072, 1, -655361, 131072, 1, -196608, 65536, 0, -196607, 65536, 0, -196606, 65536, 0, -196605, 65536, 0, -196604, 65536, 0, -196603, 65536, 0, -196602, 65536, 0, -196601, 65536, 0, -196600, 65536, 0, -196599, 65536, 0, -196598, 65536, 0, -196597, 65536, 0, -196596, 65536, 0, -196595, 65536, 0, -196594, 65536, 0, -196593, 65536, 0, -196592, 65536, 0, -196591, 65536, 0, -196590, 65536, 0, -196589, 65536, 0, -196588, 65536, 0, -196587, 65536, 0, -196586, 65536, 0, -196585, 65536, 0, -196584, 65536, 0, -196583, 65536, 0, -196582, 65536, 0, -196581, 65536, 0, -196580, 65536, 0, -196579, 65536, 0, -196578, 65536, 0, -196577, 65536, 0, -196576, 65536, 0, -65532, 65536, 1, -65531, 65536, 1, -65530, 65536, 1, -65529, 65536, 1, -65528, 65536, 1, -65527, 65536, 1, -65526, 65536, 1, -65525, 65536, 1, -65524, 65536, 1, -65523, 65536, 1, -65522, 65536, 1, -65521, 65536, 1, -65520, 65536, 1, -65519, 65536, 1, -65518, 65536, 1, -65517, 65536, 1, -65516, 65536, 1, -65515, 65536, 1, -65514, 65536, 1, -65513, 65536, 1, -65512, 65536, 1, -65511, 65536, 1, -65510, 65536, 1, -65509, 65536, 1, -65508, 65536, 1, -65507, 65536, 1, -65506, 65536, 1, -65505, 65536, 1, -65504, 65536, 1, -65503, 65536, 1, -65533, 65536, 1, -65534, 65536, 1, -65535, 65536, 1, -65536, 65536, 1, -196575, 65536, 0, -196574, 65536, 0, -196573, 65536, 0, -196572, 65536, 0, -196571, 65536, 0, -196570, 65536, 0, -196569, 65536, 0, -196568, 65536, 0, -196567, 65536, 0, -196566, 65536, 0, -196565, 65536, 0, -196564, 65536, 0, -196563, 65536, 0, -196562, 65536, 0, -196561, 65536, 0, -196560, 65536, 0, -196559, 65536, 0, -196558, 65536, 0, -196557, 65536, 0, -196556, 65536, 0, -196555, 65536, 0, -196554, 65536, 0, -196553, 65536, 0, -196552, 65536, 0, -196551, 65536, 0, -196550, 65536, 0, -196549, 65536, 0, -196548, 65536, 0, -196547, 65536, 0, -196546, 65536, 0, -196545, 65536, 0, -196544, 65536, 0, -196543, 65536, 0, -196542, 65536, 0, -196541, 65536, 0, -196540, 65536, 0, -196539, 65536, 0, -196538, 65536, 0, -196537, 65536, 0, -196536, 65536, 0, -196535, 65536, 0, -196534, 65536, 0, -196533, 65536, 0, -196532, 65536, 0, -196531, 65536, 0, -196530, 65536, 0, -196529, 65536, 0, -196528, 65536, 0, -196527, 65536, 0, -196526, 65536, 0, -196525, 65536, 0, -196524, 65536, 0, -196523, 65536, 0, -196522, 65536, 0, -196521, 65536, 0, -196520, 65536, 0, -196519, 65536, 0, -196518, 65536, 0, -196517, 65536, 0, -196516, 65536, 0, -196515, 65536, 0, -196514, 65536, 0, -196513, 65536, 0, -196512, 65536, 0, -196511, 65536, 0, -196510, 65536, 0, -196509, 65536, 0, -196508, 65536, 0, -196507, 65536, 0, -196506, 65536, 0, -196505, 65536, 0, -196504, 65536, 0, -196503, 65536, 0, -196502, 65536, 0, -262091, 393216, 0, -262055, 393216, 0, -262042, 393216, 0, -262043, 393216, 0, -262044, 393216, 0, -393208, 0, 3, -393207, 65536, 3, -393206, 131072, 3, -655348, 0, 3, -655347, 65536, 3, -655346, 131072, 3, -917489, 0, 3, -917488, 65536, 3, -917487, 131072, 3, -1179628, 0, 3, -1179627, 65536, 3, -1179626, 131072, 3, -1441769, 0, 3, -1441768, 65536, 3, -1441767, 131072, 3, -1703910, 0, 3, -1703909, 65536, 3, -1703908, 131072, 3, -1834977, 65536, 0, -1834976, 65536, 0, -1834975, 65536, 0, -1834974, 65536, 0, -1834973, 65536, 0, -1834972, 65536, 0, -1834971, 65536, 0, -1834970, 65536, 0, -1834969, 65536, 0, -1834968, 65536, 0, -1834967, 65536, 0, -1834966, 65536, 0, -1834965, 65536, 0, -1834964, 65536, 0, -1834963, 65536, 0, -1834962, 65536, 0, -1834961, 65536, 0, -1834960, 65536, 0, -1834959, 65536, 0, -1834958, 65536, 0, -1834957, 65536, 0, -1834956, 65536, 0, -1834955, 65536, 0, -1834954, 65536, 0, -1834953, 65536, 0, -1834952, 65536, 0, -1834951, 65536, 0, -1900482, 65536, 0, -1900481, 65536, 0, -1900480, 65536, 0, -1900479, 65536, 0, -1900478, 65536, 0, -1900477, 65536, 0, -1900476, 65536, 0, -1900475, 65536, 0, -262119, 393216, 0, -262118, 393216, 0, -262117, 393216, 0, -262116, 393216, 0, -262115, 393216, 0, -458741, 196608, 1, -524277, 196608, 1, -589813, 196608, 1, -655349, 196608, 1, -720885, 196608, 1, -786421, 196608, 1, -851957, 196608, 1, -917493, 196608, 1, -983029, 196608, 1, -1048565, 196608, 1, -1114101, 196608, 1)
+
+[node name="Nebuly" parent="." instance=ExtResource("1_jg1gh")]
+position = Vector2(80, -64)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(288, -160)
+zoom = Vector2(2, 2)
+process_callback = 0
+limit_left = 0
+limit_bottom = 0
+position_smoothing_enabled = true
+script = ExtResource("3_awqra")
+
+[node name="Bushly" parent="." instance=ExtResource("5_830rc")]
+position = Vector2(320, -64)
+
+[node name="Bushly2" parent="." instance=ExtResource("5_830rc")]
+position = Vector2(892, -460)
+
+[node name="BG" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="BG"]
+scale = Vector2(1, 2)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="BG/Sky"]
+position = Vector2(0, -360)
+texture = ExtResource("6_txn70")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Nuvens" type="ParallaxLayer" parent="BG"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="BG/Nuvens"]
+position = Vector2(0, -360)
+texture = ExtResource("7_uqo22")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Montanhas" type="ParallaxLayer" parent="BG"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="BG/Montanhas"]
+position = Vector2(0, -360)
+texture = ExtResource("8_hio4i")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Montanhas2" type="ParallaxLayer" parent="BG"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="BG/Montanhas2"]
+position = Vector2(0, -360)
+texture = ExtResource("9_ahyhu")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Nuvens2" type="ParallaxLayer" parent="BG"]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="BG/Nuvens2"]
+position = Vector2(0, -500)
+texture = ExtResource("10_o7ruf")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="BlocoOnOff" parent="." instance=ExtResource("11_ky0sk")]
+position = Vector2(204, -92)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HudControler" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Container" type="MarginContainer" parent="HUD/HudControler"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Coins Container[" type="Container" parent="HUD/HudControler/Container"]
+layout_mode = 2

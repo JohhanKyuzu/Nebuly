@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5miqgxes7d25"
+path="res://.godot/imported/SNES   Sonic The hedgehog 4(Hack) soundtrack   1st stage.mp3-52de764b8683f16db9258a535c5a5a06.mp3str"
+
+[deps]
+
+source_file="res://audio/SNES   Sonic The hedgehog 4(Hack) soundtrack   1st stage.mp3"
+dest_files=["res://.godot/imported/SNES   Sonic The hedgehog 4(Hack) soundtrack   1st stage.mp3-52de764b8683f16db9258a535c5a5a06.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

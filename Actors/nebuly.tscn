@@ -1,0 +1,219 @@
+[gd_scene load_steps=24 format=3 uid="uid://cn8qternnk32j"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ayh7d"]
+[ext_resource type="Texture2D" uid="uid://okj0um58we6y" path="res://Assets/Character/Nebuly/Nebuly jump and fall.png" id="2_nxl4e"]
+[ext_resource type="Texture2D" uid="uid://cvlmlu7andgh5" path="res://Assets/Character/Nebuly/Nebuly hurt.png" id="3_lehqa"]
+[ext_resource type="Texture2D" uid="uid://csqdmmr1dy0mx" path="res://Assets/Character/Nebuly/Nebuly Idle.png" id="3_oga0f"]
+[ext_resource type="Texture2D" uid="uid://kc2hkot2xorw" path="res://Assets/Character/Nebuly/Nebuly wall grab.png" id="4_26wdm"]
+[ext_resource type="Texture2D" uid="uid://l20fcw386hf3" path="res://Assets/Character/Nebuly/Nebuly run.png" id="4_h5e23"]
+[ext_resource type="AudioStream" uid="uid://digphdx4nslsd" path="res://audio/my effects/Hit_Hurt.wav" id="7_g1jna"]
+[ext_resource type="AudioStream" uid="uid://b6bnm1tld7pvs" path="res://audio/my effects/Jump.wav" id="8_py1nh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsgfg"]
+atlas = ExtResource("2_nxl4e")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6q4f"]
+atlas = ExtResource("3_oga0f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j57f"]
+atlas = ExtResource("3_oga0f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l63nj"]
+atlas = ExtResource("2_nxl4e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_367c3"]
+atlas = ExtResource("4_h5e23")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv2x2"]
+atlas = ExtResource("4_h5e23")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ciwm"]
+atlas = ExtResource("4_h5e23")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2ebu"]
+atlas = ExtResource("4_h5e23")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpdf1"]
+atlas = ExtResource("4_h5e23")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2xqy"]
+atlas = ExtResource("4_h5e23")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uehle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsgfg")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lehqa")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 30.0,
+"texture": SubResource("AtlasTexture_y6q4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j57f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l63nj")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_367c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv2x2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ciwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2ebu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpdf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2xqy")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_26wdm")
+}],
+"loop": true,
+"name": &"wall_grab",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqg1i"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4be3l"]
+size = Vector2(16, 17)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ga7v1"]
+radius = 8.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtdg6"]
+radius = 9.0
+height = 26.0
+
+[node name="Nebuly" type="CharacterBody2D"]
+collision_mask = 14
+script = ExtResource("1_ayh7d")
+jump_height = 80.0
+jump_time_to_descent = 0.3
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_uehle")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="animation_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_jqg1i")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="hurt_collision" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_4be3l")
+debug_color = Color(0.87451, 0.376471, 0.607843, 0.419608)
+
+[node name="remote" type="RemoteTransform2D" parent="."]
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="rays" type="Node2D" parent="."]
+
+[node name="ray_right" type="RayCast2D" parent="rays"]
+position = Vector2(7, 4)
+target_position = Vector2(5, 0)
+collision_mask = 4
+
+[node name="ray_right2" type="RayCast2D" parent="rays"]
+position = Vector2(7, 9)
+target_position = Vector2(5, 0)
+collision_mask = 4
+
+[node name="ray_left" type="RayCast2D" parent="rays"]
+position = Vector2(-7, 4)
+target_position = Vector2(-6, 0)
+collision_mask = 4
+
+[node name="ray_left2" type="RayCast2D" parent="rays"]
+position = Vector2(-7, 9)
+target_position = Vector2(-6, 0)
+collision_mask = 4
+
+[node name="SpikeHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="spike_collision" type="CollisionShape2D" parent="SpikeHurtBox"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_ga7v1")
+debug_color = Color(0.556863, 0.552941, 0.282353, 0.419608)
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="jump" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_py1nh")
+volume_db = -11.866
+
+[node name="hurt" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("7_g1jna")
+
+[node name="InteractionDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="DetectorCollision" type="CollisionShape2D" parent="InteractionDetector"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_qtdg6")
+debug_color = Color(0, 0.643137, 0.294118, 0.419608)
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_shape_entered" from="SpikeHurtBox" to="." method="_on_spike_hurt_box_body_shape_entered"]
+[connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
+[connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]

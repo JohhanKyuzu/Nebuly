@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://ljl4ktfcy7bi"]
+
+[ext_resource type="Script" path="res://scripts/BlocoOnOff.gd" id="1_87typ"]
+[ext_resource type="Texture2D" uid="uid://cgvt4t0kqiv7q" path="res://Assets/Tileset/Johhan/bloco ON-OFF.png" id="2_14t7u"]
+[ext_resource type="AudioStream" uid="uid://c4rbs3tlg21x7" path="res://audio/my effects/Switch.wav" id="3_b3lyu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_434ep"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_mfmgb"]
+resource_name = "OFF"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 0, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_ejiam"]
+resource_name = "ON"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_vn7em"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t585d"]
+_data = {
+"OFF": SubResource("Animation_mfmgb"),
+"ON": SubResource("Animation_ejiam"),
+"RESET": SubResource("Animation_vn7em")
+}
+
+[node name="BlocoOnOff" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_87typ")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_434ep")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_14t7u")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t585d")
+}
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b3lyu")
+volume_db = -27.999

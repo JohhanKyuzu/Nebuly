@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb262mf168hhm"]
+
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_sukj1"]
+[ext_resource type="Texture2D" uid="uid://yfy12cykwoje" path="res://Assets/Tileset/Johhan/Tileset mapa1.png" id="2_m58fk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8j0s"]
+size = Vector2(32, 16)
+
+[node name="moving_platform" type="Node2D"]
+script = ExtResource("1_sukj1")
+move_up = true
+
+[node name="platform" type="AnimatableBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite_platform" type="Sprite2D" parent="platform"]
+texture = ExtResource("2_m58fk")
+region_enabled = true
+region_rect = Rect2(64, 32, 32, 16)
+
+[node name="Collision" type="CollisionShape2D" parent="platform"]
+shape = SubResource("RectangleShape2D_r8j0s")
+one_way_collision = true

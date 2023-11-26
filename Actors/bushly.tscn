@@ -1,0 +1,220 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2vpsjoii6lr"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_62g5g"]
+[ext_resource type="Texture2D" uid="uid://0v43kdba3ksn" path="res://Assets/Character/Bushly/Hurt (16 x 16).png" id="2_glbjs"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_olwar"]
+[ext_resource type="Texture2D" uid="uid://ci00sexyknjgv" path="res://Assets/Character/Bushly/Running (16 x 16).png" id="4_8mr11"]
+[ext_resource type="AudioStream" uid="uid://ofqq7poq55xa" path="res://audio/my effects/stomp.wav" id="5_1sima"]
+
+[sub_resource type="Animation" id="Animation_33a30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_8mr11")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("texture:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 96, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_po6lm"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_glbjs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("texture:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0g86a"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_8mr11")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 96, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("texture:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8vsd"]
+_data = {
+"RESET": SubResource("Animation_33a30"),
+"hurt": SubResource("Animation_po6lm"),
+"walk": SubResource("Animation_0g86a")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1am5h"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avixy"]
+size = Vector2(8, 3.25)
+
+[node name="Bushly" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_62g5g")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("4_8mr11")
+hframes = 6
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 16)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+libraries = {
+"": SubResource("AnimationLibrary_f8vsd")
+}
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_1am5h")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("3_olwar")
+
+[node name="collision2" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -3.625)
+shape = SubResource("RectangleShape2D_avixy")
+one_way_collision = true
+debug_color = Color(0.462745, 0.580392, 0.34902, 0.419608)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(0, 1)
+target_position = Vector2(8, 0)
+collision_mask = 6
+
+[node name="hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1sima")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="animation_started" from="anim" to="." method="_on_anim_animation_started"]
+[connection signal="body_entered" from="hitbox" to="hitbox" method="_on_body_entered"]

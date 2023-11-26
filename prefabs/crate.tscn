@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbq5vmvt6p0bl"]
+
+[ext_resource type="Texture2D" uid="uid://yfy12cykwoje" path="res://Assets/Tileset/Johhan/Tileset mapa1.png" id="1_5c2sv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqu7m"]
+size = Vector2(16, 16)
+
+[node name="crate" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="TilesetMapa1" type="Sprite2D" parent="."]
+texture = ExtResource("1_5c2sv")
+region_enabled = true
+region_rect = Rect2(64, 48, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yqu7m")
