@@ -162,9 +162,8 @@ jump_time_to_descent = 0.3
 [node name="anim" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_uehle")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
-frame_progress = 0.343511
 
 [node name="animation_collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -233,6 +232,10 @@ collision_mask = 16
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_qtdg6")
 debug_color = Color(0, 0.643137, 0.294118, 0.419608)
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="body_shape_entered" from="SpikeHurtBox" to="." method="_on_spike_hurt_box_body_shape_entered"]

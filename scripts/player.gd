@@ -16,6 +16,7 @@ var air_jumps_current : int = 0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
 
+
 var dash_direction = Vector2(1,0)
 var can_dash = false
 var dashing = false
@@ -30,6 +31,7 @@ var dash_speed = 500
 @onready var nebuly = $"."
 @onready var hurt_collision = $HurtBox/hurt_collision
 @onready var spike_collision = $SpikeHurtBox/spike_collision
+@onready var dash_timer = $DashTimer
 
 
 var direction
@@ -64,7 +66,9 @@ func _physics_process(delta):
 	if is_on_floor() and !dashing:
 		max_speed = max_speed_padrao
 	if is_on_wall():
+		air_jumps_current = air_jumps_total
 		max_speed = max_speed_padrao
+		can_dash = true
 			
 	if Input.is_action_just_pressed("jump"):
 		jump_timer = 0.4
@@ -97,17 +101,16 @@ func _physics_process(delta):
 	elif direction < 0:
 		velocity.x -= acceleration
 		animation.flip_h = true
-		
+	
 			
 	
 		
 	if direction == 0:
-		velocity.x = lerp(velocity.x, 0.0, 0.2)
+		if !dashing:
+			velocity.x = lerp(velocity.x, 0.0, 0.2)
 		
 	if Input.is_action_just_pressed("dash"):
-		if !dashing and can_dash:
-			max_speed = 500
-			max_fall_speed = 0
+		if dash_timer.is_stopped() and can_dash:
 			dash()
 			
 		
@@ -160,15 +163,19 @@ func air_jump():
 	jump_sound.play()
 	
 func dash():
-	if Input.is_action_pressed("move_left"):
+	dash_timer.start()
+	dashing = true
+	max_speed = 300
+	acceleration = 300
+	max_fall_speed = 0
+	if animation.flip_h == true:
 		dash_direction = Vector2(-1,0)
-	if Input.is_action_pressed("move_right"):
+	if animation.flip_h == false:
 		dash_direction = Vector2(1,0)
 	velocity = dash_direction.normalized() * dash_speed
-	dashing = true
 	can_dash = false
-	await get_tree().create_timer(.2).timeout
-	#max_speed = max_speed_padrao
+	await get_tree().create_timer(.3).timeout
+	acceleration = 15
 	max_fall_speed = 550
 	dashing = false
 
@@ -298,3 +305,4 @@ func _on_interaction_detector_area_entered(area):
 
 func _on_interaction_detector_area_exited(_area):
 	is_interacting = false
+
