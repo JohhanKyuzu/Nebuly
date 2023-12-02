@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var max_speed : int = 150
+var max_speed_padrao : int = 150
 @export var acceleration : int = 15
 @export var max_fall_speed : int = 550
 @export var air_jumps_total : int = Globals.max_air_jump
@@ -61,7 +62,9 @@ func _physics_process(delta):
 		air_jumps_current = air_jumps_total
 		can_dash = true
 	if is_on_floor() and !dashing:
-		max_speed = 150
+		max_speed = max_speed_padrao
+	if is_on_wall():
+		max_speed = max_speed_padrao
 			
 	if Input.is_action_just_pressed("jump"):
 		jump_timer = 0.4
@@ -165,7 +168,7 @@ func dash():
 	dashing = true
 	can_dash = false
 	await get_tree().create_timer(.2).timeout
-	#max_speed = 150
+	#max_speed = max_speed_padrao
 	max_fall_speed = 550
 	dashing = false
 
