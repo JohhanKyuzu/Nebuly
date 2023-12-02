@@ -14,6 +14,13 @@ var air_jumps_current : int = 0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
+
+var dash_direction = Vector2(1,0)
+var can_dash = false
+var dashing = false
+var dash_speed = 500
+
+
 @onready var animation := $anim as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
 @onready var coyote_timer = $CoyoteTimer
@@ -33,6 +40,7 @@ var is_jumping := false
 var is_interacting := false
 var interaction
 
+
 var spike_hurt := false
 
 signal player_has_died()
@@ -49,8 +57,11 @@ func _physics_process(delta):
 	direction = get_horizontal_velocity()
 	
 	
-	if is_on_floor() or is_on_wall():
+	if is_on_floor():
 		air_jumps_current = air_jumps_total
+		can_dash = true
+	if is_on_floor() and !dashing:
+		max_speed = 150
 			
 	if Input.is_action_just_pressed("jump"):
 		jump_timer = 0.4
@@ -83,16 +94,25 @@ func _physics_process(delta):
 	elif direction < 0:
 		velocity.x -= acceleration
 		animation.flip_h = true
+		
+			
 	
 		
 	if direction == 0:
 		velocity.x = lerp(velocity.x, 0.0, 0.2)
-
-	
+		
+	if Input.is_action_just_pressed("dash"):
+		if !dashing and can_dash:
+			max_speed = 500
+			max_fall_speed = 0
+			dash()
+			
+		
+		
 	
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 	
-			
+	
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
 		
@@ -135,6 +155,20 @@ func air_jump():
 	air_jumps_current -= 1
 	velocity.y = jump_velocity
 	jump_sound.play()
+	
+func dash():
+	if Input.is_action_pressed("move_left"):
+		dash_direction = Vector2(-1,0)
+	if Input.is_action_pressed("move_right"):
+		dash_direction = Vector2(1,0)
+	velocity = dash_direction.normalized() * dash_speed
+	dashing = true
+	can_dash = false
+	await get_tree().create_timer(.2).timeout
+	#max_speed = 150
+	max_fall_speed = 550
+	dashing = false
+
 
 func get_horizontal_velocity() -> float:
 	var horizontal := 0.0
@@ -143,11 +177,16 @@ func get_horizontal_velocity() -> float:
 		horizontal -= 1.0
 	if Input.is_action_pressed("move_right"):
 		horizontal += 1.0
-	
 	return horizontal
 
-
-			
+func get_facing_direction():
+	var flip
+	if animation.flip_h == true:
+		flip = -1
+	else:
+		flip = 1
+	return flip
+		
 		
 func follow_camera(camera):
 	var camera_path = camera.get_path()
@@ -251,9 +290,6 @@ func _on_spike_hurt_box_body_shape_entered(_body_rid, _body, _body_shape_index, 
 func _on_interaction_detector_area_entered(area):
 	is_interacting = true
 	interaction = area
-
-
-
 
 func _on_interaction_detector_area_exited(_area):
 	is_interacting = false
