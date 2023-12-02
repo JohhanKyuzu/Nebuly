@@ -165,6 +165,9 @@ func air_jump():
 func dash():
 	dash_timer.start()
 	dashing = true
+	hurt_collision.disabled = true
+	spike_collision.disabled = true
+	nebuly.set_collision_mask_value(3,false)
 	max_speed = 300
 	acceleration = 300
 	max_fall_speed = 0
@@ -178,6 +181,9 @@ func dash():
 	acceleration = 15
 	max_fall_speed = 550
 	dashing = false
+	hurt_collision.disabled = false
+	spike_collision.disabled = false
+	nebuly.set_collision_mask_value(3,true)
 
 
 func get_horizontal_velocity() -> float:

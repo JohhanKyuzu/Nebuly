@@ -31,9 +31,9 @@ position = Vector2(80, -64)
 position = Vector2(288, -160)
 zoom = Vector2(2, 2)
 process_callback = 0
-limit_left = 0
 limit_bottom = 0
 position_smoothing_enabled = true
+position_smoothing_speed = 9.0
 script = ExtResource("3_awqra")
 
 [node name="Bushly" parent="." instance=ExtResource("5_830rc")]
