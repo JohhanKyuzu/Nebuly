@@ -260,6 +260,8 @@ func _set_state():
 		
 	if wall_sliding:
 		state = "wall_grab"
+	if dashing:
+		state = "dash"
 	
 	if animation.name != state:
 		animation.play(state)

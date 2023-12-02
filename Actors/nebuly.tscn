@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://cn8qternnk32j"]
+[gd_scene load_steps=27 format=3 uid="uid://cn8qternnk32j"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ayh7d"]
+[ext_resource type="Texture2D" uid="uid://sn5el1xvsfkb" path="res://Assets/Character/Nebuly/dash.png" id="2_bkib3"]
 [ext_resource type="Texture2D" uid="uid://okj0um58we6y" path="res://Assets/Character/Nebuly/Nebuly jump and fall.png" id="2_nxl4e"]
 [ext_resource type="Texture2D" uid="uid://cvlmlu7andgh5" path="res://Assets/Character/Nebuly/Nebuly hurt.png" id="3_lehqa"]
 [ext_resource type="Texture2D" uid="uid://csqdmmr1dy0mx" path="res://Assets/Character/Nebuly/Nebuly Idle.png" id="3_oga0f"]
@@ -8,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://l20fcw386hf3" path="res://Assets/Character/Nebuly/Nebuly run.png" id="4_h5e23"]
 [ext_resource type="AudioStream" uid="uid://digphdx4nslsd" path="res://audio/my effects/Hit_Hurt.wav" id="7_g1jna"]
 [ext_resource type="AudioStream" uid="uid://b6bnm1tld7pvs" path="res://audio/my effects/Jump.wav" id="8_py1nh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeocv"]
+atlas = ExtResource("2_bkib3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qep7"]
+atlas = ExtResource("2_bkib3")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsgfg"]
 atlas = ExtResource("2_nxl4e")
@@ -51,6 +60,17 @@ region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uehle"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeocv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qep7")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dsgfg")
@@ -144,6 +164,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_uehle")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.343511
 
 [node name="animation_collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
