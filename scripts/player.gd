@@ -87,7 +87,7 @@ func _physics_process(delta):
 	if is_jumping:
 		if velocity.y > 0:
 			is_jumping = false
-	if !is_on_floor() and is_on_wall() and direction != 0 and Globals.switch_is_on:
+	if !is_on_floor() and is_on_wall() and direction != 0:
 		wall_sliding = true
 		if velocity.y > 0:
 			velocity.y /= 1.5
