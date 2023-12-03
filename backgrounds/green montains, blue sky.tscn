@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://xorrw4j1x74j"]
+
+[ext_resource type="Texture2D" uid="uid://btjqwhea3g1o" path="res://Assets/Tileset/Johhan/ceu.png" id="1_l4ia5"]
+[ext_resource type="Texture2D" uid="uid://7c2s6efm3f2g" path="res://Assets/Tileset/Johhan/nuvens.png" id="2_kx36e"]
+[ext_resource type="Texture2D" uid="uid://bwvj1idhboi8v" path="res://Assets/Tileset/Johhan/montanhas.png" id="3_cptmn"]
+[ext_resource type="Texture2D" uid="uid://coms7nyeks4oa" path="res://Assets/Tileset/Johhan/montanhas2.png" id="4_ixsng"]
+[ext_resource type="Shader" path="res://shader/nuvens.gdshader" id="5_7dqlu"]
+[ext_resource type="Texture2D" uid="uid://u0qtl1by6lfq" path="res://Assets/Tileset/Johhan/nuvens2.png" id="6_r6237"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_il378"]
+shader = ExtResource("5_7dqlu")
+shader_parameter/move_speed = 0.03
+
+[node name="BG" type="ParallaxBackground"]
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+texture_repeat = 2
+scale = Vector2(1, 2)
+motion_mirroring = Vector2(640, 360)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="Sky"]
+position = Vector2(0, -360)
+texture = ExtResource("1_l4ia5")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Nuvens" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="Nuvens"]
+position = Vector2(0, -360)
+texture = ExtResource("2_kx36e")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Montanhas" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="Montanhas"]
+position = Vector2(0, -360)
+texture = ExtResource("3_cptmn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Montanhas2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="Montanhas2"]
+position = Vector2(0, -360)
+texture = ExtResource("4_ixsng")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Nuvens2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="texture" type="Sprite2D" parent="Nuvens2"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_il378")
+position = Vector2(0, -500)
+texture = ExtResource("6_r6237")
+centered = false
+metadata/_edit_lock_ = true

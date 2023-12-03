@@ -154,6 +154,7 @@ radius = 9.0
 height = 26.0
 
 [node name="Nebuly" type="CharacterBody2D"]
+z_index = 10
 collision_mask = 14
 script = ExtResource("1_ayh7d")
 jump_height = 80.0
@@ -162,7 +163,7 @@ jump_time_to_descent = 0.3
 [node name="anim" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_uehle")
-animation = &"hurt"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="animation_collision" type="CollisionShape2D" parent="."]

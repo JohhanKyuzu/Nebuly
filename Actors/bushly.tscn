@@ -177,6 +177,7 @@ height = 12.0
 size = Vector2(8, 3.25)
 
 [node name="Bushly" type="CharacterBody2D" groups=["enemies"]]
+z_index = 3
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_62g5g")
@@ -188,10 +189,10 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 16)
 
 [node name="anim" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_f8vsd")
 }
+autoplay = "walk"
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

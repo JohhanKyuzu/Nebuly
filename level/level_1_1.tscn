@@ -1,12 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://pkvsp11fk71b"]
+[gd_scene load_steps=7 format=3 uid="uid://pkvsp11fk71b"]
 
+[ext_resource type="Script" path="res://scripts/world_01.gd" id="1_ry3mn"]
 [ext_resource type="PackedScene" uid="uid://c5yq4dagt1xjv" path="res://tilemaps/tile_map_teste.tscn" id="1_sfn61"]
 [ext_resource type="PackedScene" uid="uid://cn8qternnk32j" path="res://Actors/nebuly.tscn" id="2_jpylq"]
+[ext_resource type="PackedScene" uid="uid://dhnxb46bwfq2c" path="res://prefabs/camera.tscn" id="3_m0j8d"]
+[ext_resource type="PackedScene" uid="uid://bod7rltby8k0x" path="res://prefabs/porta.tscn" id="5_m6160"]
+[ext_resource type="PackedScene" uid="uid://xorrw4j1x74j" path="res://backgrounds/green montains, blue sky.tscn" id="6_fcv7g"]
 
 [node name="Level 1-1" type="Node2D"]
+script = ExtResource("1_ry3mn")
 
 [node name="TileMap_base" parent="." instance=ExtResource("1_sfn61")]
 layer_0/tile_data = PackedInt32Array(-262144, 65536, 0, -262143, 65536, 0, -262142, 65536, 0, -262141, 65536, 0, -262140, 65536, 0, -262139, 65536, 0, -262138, 65536, 0, -262137, 65536, 0, -262136, 65536, 0, -262135, 65536, 0, -262134, 65536, 0, -262133, 65536, 0, -262132, 65536, 0, -262131, 65536, 0, -262130, 65536, 0, -262129, 65536, 0, -262128, 65536, 0, -262127, 65536, 0, -262126, 65536, 0, -262125, 65536, 0, -262124, 65536, 0, -262123, 65536, 0, -262122, 65536, 0, -262121, 65536, 0, -262120, 65536, 0, -262119, 65536, 0, -262118, 65536, 0, -262117, 65536, 0, -262116, 65536, 0, -262115, 65536, 0, -262114, 65536, 0, -262113, 65536, 0, -262112, 65536, 0, -262111, 65536, 0, -262110, 65536, 0, -262109, 65536, 0, -262108, 65536, 0, -262107, 65536, 0, -262106, 65536, 0, -262105, 65536, 0)
 
 [node name="Nebuly" parent="." instance=ExtResource("2_jpylq")]
-position = Vector2(64, -88)
+position = Vector2(236, -80)
+
+[node name="Camera" parent="." instance=ExtResource("3_m0j8d")]
+position = Vector2(236, -172)
+
+[node name="Porta" parent="." instance=ExtResource("5_m6160")]
+position = Vector2(236, -80)
+destino = "res://level/mundo_teste.tscn"
+
+[node name="BG" parent="." instance=ExtResource("6_fcv7g")]
