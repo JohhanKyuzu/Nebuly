@@ -9,6 +9,7 @@ var player_hp = int(clamp(player_max_hp,0,player_max_hp))
 #switchs, doors
 var switch_is_on = false
 var has_key = false
+var is_alive = true
 
 
 #powerups

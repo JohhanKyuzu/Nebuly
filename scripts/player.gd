@@ -228,6 +228,7 @@ func take_damage(knockback_force := Vector2.ZERO, duration:=0.25, damage := 1):
 	is_hurted = false
 	if Globals.player_hp < 1:
 		emit_signal("player_has_died")
+		Globals.is_alive = false
 		queue_free()
 		Globals.player_life -= 1
 	invencivel()

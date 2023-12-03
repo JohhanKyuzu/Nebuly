@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clscio020oyy1"
+path="res://.godot/imported/2023-12-03 11-18-15.mp3-546a4fdbd56525005aaef05d3f5e5bc8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Tileset/Johhan/2023-12-03 11-18-15.mp3"
+dest_files=["res://.godot/imported/2023-12-03 11-18-15.mp3-546a4fdbd56525005aaef05d3f5e5bc8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

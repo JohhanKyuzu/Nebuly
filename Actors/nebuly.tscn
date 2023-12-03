@@ -219,7 +219,6 @@ debug_color = Color(0.556863, 0.552941, 0.282353, 0.419608)
 
 [node name="jump" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("8_py1nh")
-volume_db = -11.866
 
 [node name="hurt" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("7_g1jna")
