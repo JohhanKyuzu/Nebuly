@@ -63,6 +63,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		air_jumps_current = air_jumps_total
 		can_dash = true
+	
 	if is_on_floor() and !dashing:
 		max_speed = max_speed_padrao
 	if is_on_wall():
@@ -87,7 +88,7 @@ func _physics_process(delta):
 	if is_jumping:
 		if velocity.y > 0:
 			is_jumping = false
-	if !is_on_floor() and is_on_wall() and direction != 0:
+	if !is_on_floor() and is_on_wall() and direction != 0 and Globals.wall_jump_1:
 		wall_sliding = true
 		if velocity.y > 0:
 			velocity.y /= 1.5
@@ -110,7 +111,7 @@ func _physics_process(delta):
 			velocity.x = lerp(velocity.x, 0.0, 0.2)
 		
 	if Input.is_action_just_pressed("dash"):
-		if dash_timer.is_stopped() and can_dash:
+		if dash_timer.is_stopped() and can_dash and Globals.dash:
 			dash()
 			
 		
@@ -153,9 +154,10 @@ func jump():
 	jump_sound.play()
 
 func wall_jump():
-	var jump_vector = Vector2(400 * -direction, jump_velocity / 1.1)
-	velocity = jump_vector
-	jump_sound.play()
+	if Globals.wall_jump_1 == true:
+		var jump_vector = Vector2(400 * -direction, jump_velocity / 1.1)
+		velocity = jump_vector
+		jump_sound.play()
 
 func air_jump():
 	air_jumps_current -= 1
@@ -209,9 +211,8 @@ func follow_camera(camera):
 	remote_transform.remote_path = camera_path
 	
 
-func take_damage(knockback_force := Vector2.ZERO, duration:=0.25, damage := 1):
+func take_damage(knockback_force := Vector2.ZERO, duration:=0.25, damage := 1.0):
 	Globals.player_hp -= damage
-	print(Globals.player_hp)
 	hurt_sound.play()
 	
 	
@@ -226,7 +227,7 @@ func take_damage(knockback_force := Vector2.ZERO, duration:=0.25, damage := 1):
 	is_hurted = true
 	await get_tree().create_timer(.3).timeout
 	is_hurted = false
-	if Globals.player_hp < 1:
+	if Globals.player_hp <= 0:
 		emit_signal("player_has_died")
 		Globals.is_alive = false
 		queue_free()
@@ -241,7 +242,7 @@ func spike_damage():
 		else:
 			knockback_vector = (Vector2(200,-200))
 		
-		take_damage(knockback_vector, 0.25, 2)
+		take_damage(knockback_vector, 0.25, 0.5)
 
 func invencivel(duration := 2.0):
 	hurt_collision.disabled = true
@@ -281,14 +282,14 @@ func _set_state():
 		animation.play(state)
 
 
-func _on_head_collider_body_entered(body):
-	if body.has_method("break_sprite"):
-		body.hitpoints -= 1
-		if body.hitpoints < 1:
-			body.break_sprite()
-		else:
-			body.create_coin()
-			body.anim.play("hit")
+#func _on_head_collider_body_entered(body):
+	#if body.has_method("break_sprite"):
+		#body.hitpoints -= 1
+		#if body.hitpoints < 1:
+			#body.break_sprite()
+		#else:
+			#body.create_coin()
+			#body.anim.play("hit")
 			
 			
 func _on_hurt_box_body_entered(body):

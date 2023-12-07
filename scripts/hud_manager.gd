@@ -1,18 +1,24 @@
 extends Control
 
-@onready var coins_counter = $container/coins_container/coins_counter as Label
-@onready var score_counter = $container2/score_container/score_counter as Label
-@onready var life_counter = $container/life_container/life_counter as Label
+@onready var coins_counter = $Container/UpLeftContainer/CoinsContainer/CoinsCounter as Label
+@onready var score_counter = $Container/ScoreContainer/ScoreCounter as Label
+@onready var life_counter = $Container/UpLeftContainer/LifeContainer/LifeCounter as Label
+@onready var health_empty = $Container/HealthEmpty as TextureRect
+@onready var health_full = $Container/HealthFull as TextureRect
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	coins_counter.text = str("%02d"% Globals.coins)
 	score_counter.text = str("%06d"% Globals.score)
 	life_counter.text = str(Globals.player_life)
+	health_empty.custom_minimum_size = Vector2(Globals.player_max_hp * 72 , 64)
+	health_full.custom_minimum_size = Vector2(Globals.player_hp * 72, 64)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	coins_counter.text = str("%02d"% Globals.coins)
 	score_counter.text = str("%06d"% Globals.score)
 	life_counter.text = str(Globals.player_life)
+	health_empty.custom_minimum_size = Vector2(Globals.player_max_hp * 72 , 64)
+	health_full.custom_minimum_size = Vector2(Globals.player_hp * 72, 64)
+

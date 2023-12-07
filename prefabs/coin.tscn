@@ -86,6 +86,7 @@ sprite_frames = SubResource("SpriteFrames_mueuf")
 autoplay = "default"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+z_index = 2
 shape = SubResource("CircleShape2D_np43n")
 
 [node name="som" type="AudioStreamPlayer" parent="."]

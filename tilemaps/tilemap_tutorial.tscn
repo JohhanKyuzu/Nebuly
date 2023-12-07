@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dosasdyu001a3"]
+
+[ext_resource type="Texture2D" uid="uid://bfr0klhmox342" path="res://Assets/Tileset/Johhan/tileset tutorial.png" id="1_j7g38"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_88162"]
+texture = ExtResource("1_j7g38")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 8, -8, 8)
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -4, -8, 8, 8, 8, 8, -4)
+
+[sub_resource type="TileSet" id="TileSet_75vnt"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+physics_layer_1/collision_layer = 32
+physics_layer_1/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_88162")
+
+[node name="TilemapTutorial" type="TileMap"]
+tile_set = SubResource("TileSet_75vnt")
+format = 2
+layer_0/name = "Ground"
+layer_1/name = "Decoration"
+layer_1/tile_data = PackedInt32Array()
