@@ -54,15 +54,20 @@ func _process(_delta):
 		if Input.is_action_just_pressed("move_up"):
 			if interaction.has_method("transport"):
 				interaction.transport(nebuly)
+	
 
 func _physics_process(delta):
 	velocity.y += get_gravity() * delta
 	direction = get_horizontal_velocity()
+	velocity.y = clamp(velocity.y, -1000, max_fall_speed)
 	
 	
 	if is_on_floor():
 		air_jumps_current = air_jumps_total
 		can_dash = true
+		
+	if !dashing:
+		rotation = 0
 	
 	if is_on_floor() and !dashing:
 		max_speed = max_speed_padrao
@@ -115,8 +120,12 @@ func _physics_process(delta):
 			dash()
 			
 		
-		
-	
+	if dashing:
+		if velocity.y <= -1:
+			if animation.flip_h == true:
+				rotation = 45.0
+			elif animation.flip_h == false:
+				rotation = -45.0
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 	
 	
@@ -129,7 +138,7 @@ func _physics_process(delta):
 			
 		
 	var was_on_floor = is_on_floor()
-	velocity.y = clamp(velocity.y, -1000, max_fall_speed)
+	
 	
 	_set_state()
 	move_and_slide()
@@ -180,12 +189,16 @@ func dash():
 	velocity = dash_direction.normalized() * dash_speed
 	can_dash = false
 	await get_tree().create_timer(.3).timeout
-	acceleration = 15
 	max_fall_speed = 550
+	
+	acceleration = 15
 	dashing = false
 	hurt_collision.disabled = false
 	spike_collision.disabled = false
 	nebuly.set_collision_mask_value(3,true)
+			
+		
+	
 
 
 func get_horizontal_velocity() -> float:
