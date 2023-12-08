@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://pkvsp11fk71b"]
+[gd_scene load_steps=10 format=3 uid="uid://pkvsp11fk71b"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_ry3mn"]
 [ext_resource type="PackedScene" uid="uid://c5yq4dagt1xjv" path="res://tilemaps/tile_map_teste.tscn" id="1_sfn61"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://xorrw4j1x74j" path="res://backgrounds/green montains, blue sky.tscn" id="6_fcv7g"]
 [ext_resource type="PackedScene" uid="uid://kj1b03d7tb28" path="res://prefabs/coin.tscn" id="7_dltg5"]
 [ext_resource type="AudioStream" uid="uid://bki4xvnh2p2pa" path="res://audio/music/8-bit-arcade-mode-158814.mp3" id="8_21uql"]
+[ext_resource type="PackedScene" uid="uid://b3t47xddonbyj" path="res://prefabs/hud.tscn" id="9_2htjw"]
 
 [node name="Level 1-1" type="Node2D"]
 script = ExtResource("1_ry3mn")
@@ -36,3 +37,5 @@ position = Vector2(556, -744)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_21uql")
 autoplay = true
+
+[node name="HUD" parent="." instance=ExtResource("9_2htjw")]

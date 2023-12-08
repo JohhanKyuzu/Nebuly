@@ -3,8 +3,8 @@ extends Control
 @onready var coins_counter = $Container/UpLeftContainer/CoinsContainer/CoinsCounter as Label
 @onready var score_counter = $Container/ScoreContainer/ScoreCounter as Label
 @onready var life_counter = $Container/UpLeftContainer/LifeContainer/LifeCounter as Label
-@onready var health_empty = $Container/HealthEmpty as TextureRect
-@onready var health_full = $Container/HealthFull as TextureRect
+@onready var health_empty = $HeartsContainer/HealthEmpty as TextureRect
+@onready var health_full = $HeartsContainer/HealthFull as TextureRect
 
 
 func _ready():

@@ -67,7 +67,7 @@ func _physics_process(delta):
 		can_dash = true
 		
 	if !dashing:
-		rotation = 0
+		animation.rotation = 0
 	
 	if is_on_floor() and !dashing:
 		max_speed = max_speed_padrao
@@ -123,9 +123,10 @@ func _physics_process(delta):
 	if dashing:
 		if velocity.y <= -1:
 			if animation.flip_h == true:
-				rotation = 45.0
+				animation.rotation = 45.0
 			elif animation.flip_h == false:
-				rotation = -45.0
+				animation.rotation = -45.0
+		
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 	
 	
