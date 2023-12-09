@@ -2,7 +2,7 @@ extends Node
 #stats
 var coins := 0
 var score := 0
-var player_life = int(clamp(99,0,100))
+var player_life = int(clamp(99,0,99))
 var player_max_hp := 3.0
 var player_hp = float(clamp(player_max_hp,0,player_max_hp))
 

@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-@export var max_speed : int = 150
+var max_speed : int = 300
 var max_speed_padrao : int = 150
+var max_speed_dash : int = 300
 @export var acceleration : int = 15
 @export var max_fall_speed : int = 550
 @export var air_jumps_total : int = Globals.max_air_jump
@@ -71,6 +72,14 @@ func _physics_process(delta):
 	
 	if is_on_floor() and !dashing:
 		max_speed = max_speed_padrao
+		
+	if is_on_floor() and direction == 0 and !dashing:
+		velocity.x = lerp(velocity.x, 0.0, 0.2)
+	
+	if !is_on_floor() and max_speed == max_speed_padrao and direction == 0 and !dashing:
+		velocity.x = lerp(velocity.x, 0.0, 0.2)
+		
+		
 	if is_on_wall():
 		air_jumps_current = air_jumps_total
 		max_speed = max_speed_padrao
@@ -104,17 +113,14 @@ func _physics_process(delta):
 	if direction > 0:
 		velocity.x += acceleration
 		animation.flip_h = false
+		if !dashing:
+			max_speed = max_speed_padrao
 	elif direction < 0:
 		velocity.x -= acceleration
 		animation.flip_h = true
-	
-			
-	
-		
-	if direction == 0:
 		if !dashing:
-			velocity.x = lerp(velocity.x, 0.0, 0.2)
-		
+			max_speed = max_speed_padrao
+			
 	if Input.is_action_just_pressed("dash"):
 		if dash_timer.is_stopped() and can_dash and Globals.dash:
 			dash()
@@ -180,8 +186,8 @@ func dash():
 	hurt_collision.disabled = true
 	spike_collision.disabled = true
 	nebuly.set_collision_mask_value(3,false)
-	max_speed = 300
-	acceleration = 300
+	max_speed = max_speed_dash
+	acceleration = max_speed_dash
 	max_fall_speed = 0
 	if animation.flip_h == true:
 		dash_direction = Vector2(-1,0)

@@ -22,8 +22,13 @@ layer_0/tile_data = PackedInt32Array(-131070, 65536, 1, -131069, 65536, 1, -1310
 [node name="Nebuly" parent="." instance=ExtResource("1_jg1gh")]
 position = Vector2(36, -68)
 
-[node name="Camera" parent="." instance=ExtResource("4_adbls")]
+[node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_adbls")]
 position = Vector2(56, -128)
+position_smoothing_enabled = false
+drag_vertical_enabled = true
+drag_top_margin = 0.1
+drag_bottom_margin = 0.1
+player = NodePath("../Nebuly")
 
 [node name="Bushly" parent="." instance=ExtResource("5_830rc")]
 position = Vector2(320, -64)
@@ -41,7 +46,6 @@ position = Vector2(832, -460)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("13_kkma1")
-autoplay = true
 
 [node name="Porta" parent="." instance=ExtResource("14_cb53e")]
 position = Vector2(64, -64)
@@ -369,121 +373,121 @@ position = Vector2(1092, -56)
 position = Vector2(1092, -72)
 
 [node name="crate3" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1696, -72)
+position = Vector2(1240, -72)
 
 [node name="crate5" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1680, -72)
+position = Vector2(1224, -72)
 
 [node name="crate6" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1712, -72)
+position = Vector2(1256, -72)
 
 [node name="crate9" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1664, -56)
+position = Vector2(1208, -56)
 
 [node name="crate11" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1664, -72)
+position = Vector2(1208, -72)
 
 [node name="crate12" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1680, -56)
+position = Vector2(1224, -56)
 
 [node name="crate14" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1696, -56)
+position = Vector2(1240, -56)
 
 [node name="crate17" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1712, -56)
+position = Vector2(1256, -56)
 
 [node name="crate20" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1728, -56)
+position = Vector2(1272, -56)
 
 [node name="crate23" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1728, -72)
+position = Vector2(1272, -72)
 
 [node name="crate15" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1696, -104)
+position = Vector2(1240, -104)
 
 [node name="crate18" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1680, -104)
+position = Vector2(1224, -104)
 
 [node name="crate21" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1712, -104)
+position = Vector2(1256, -104)
 
 [node name="crate24" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1664, -88)
+position = Vector2(1208, -88)
 
 [node name="crate25" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1664, -104)
+position = Vector2(1208, -104)
 
 [node name="crate26" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1680, -88)
+position = Vector2(1224, -88)
 
 [node name="crate27" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1696, -88)
+position = Vector2(1240, -88)
 
 [node name="crate28" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1712, -88)
+position = Vector2(1256, -88)
 
 [node name="crate29" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1728, -88)
+position = Vector2(1272, -88)
 
 [node name="crate30" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1728, -104)
+position = Vector2(1272, -104)
 
 [node name="crate31" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1776, -72)
+position = Vector2(1320, -72)
 
 [node name="crate32" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1760, -72)
+position = Vector2(1304, -72)
 
 [node name="crate33" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1792, -72)
+position = Vector2(1336, -72)
 
 [node name="crate34" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1744, -56)
+position = Vector2(1288, -56)
 
 [node name="crate35" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1744, -72)
+position = Vector2(1288, -72)
 
 [node name="crate36" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1760, -56)
+position = Vector2(1304, -56)
 
 [node name="crate37" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1776, -56)
+position = Vector2(1320, -56)
 
 [node name="crate38" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1792, -56)
+position = Vector2(1336, -56)
 
 [node name="crate39" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1808, -56)
+position = Vector2(1352, -56)
 
 [node name="crate40" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1808, -72)
+position = Vector2(1352, -72)
 
 [node name="crate41" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1776, -104)
+position = Vector2(1320, -104)
 
 [node name="crate42" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1760, -104)
+position = Vector2(1304, -104)
 
 [node name="crate43" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1792, -104)
+position = Vector2(1336, -104)
 
 [node name="crate44" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1744, -88)
+position = Vector2(1288, -88)
 
 [node name="crate45" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1744, -104)
+position = Vector2(1288, -104)
 
 [node name="crate46" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1760, -88)
+position = Vector2(1304, -88)
 
 [node name="crate47" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1776, -88)
+position = Vector2(1320, -88)
 
 [node name="crate48" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1792, -88)
+position = Vector2(1336, -88)
 
 [node name="crate49" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1808, -88)
+position = Vector2(1352, -88)
 
 [node name="crate50" parent="crates" instance=ExtResource("17_io6qm")]
-position = Vector2(1808, -104)
+position = Vector2(1352, -104)

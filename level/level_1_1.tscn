@@ -19,8 +19,9 @@ layer_0/tile_data = PackedInt32Array(-262144, 65536, 0, -262143, 65536, 0, -2621
 [node name="Nebuly" parent="." instance=ExtResource("2_jpylq")]
 position = Vector2(236, -80)
 
-[node name="Camera" parent="." instance=ExtResource("3_m0j8d")]
+[node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_m0j8d")]
 position = Vector2(260, -172)
+player = NodePath("../Nebuly")
 
 [node name="Porta" parent="." instance=ExtResource("5_m6160")]
 position = Vector2(192, -80)

@@ -3,7 +3,6 @@ extends Node2D
 @onready var player = $Nebuly
 @onready var camera = $Camera
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	player.follow_camera(camera)
