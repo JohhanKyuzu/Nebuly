@@ -155,7 +155,7 @@ height = 26.0
 
 [node name="Nebuly" type="CharacterBody2D"]
 z_index = 10
-collision_mask = 14
+collision_mask = 526
 script = ExtResource("1_ayh7d")
 jump_height = 80.0
 jump_time_to_descent = 0.3
@@ -228,7 +228,7 @@ volume_db = -6.98
 
 [node name="InteractionDetector" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 528
 
 [node name="DetectorCollision" type="CollisionShape2D" parent="InteractionDetector"]
 position = Vector2(0, 5)
@@ -243,3 +243,6 @@ one_shot = true
 [connection signal="body_shape_entered" from="SpikeHurtBox" to="." method="_on_spike_hurt_box_body_shape_entered"]
 [connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
 [connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]
+[connection signal="body_entered" from="InteractionDetector" to="." method="_on_interaction_detector_body_entered"]
+[connection signal="body_exited" from="InteractionDetector" to="." method="_on_interaction_detector_body_exited"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

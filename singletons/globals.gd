@@ -13,7 +13,7 @@ var is_alive = true
 
 
 #powerups
-var wall_jump_1 = false
+var wall_jump_1 = true
 var run = false
 var max_air_jump = 0
 var dash = true

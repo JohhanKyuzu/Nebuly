@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="1_0wdxg"]
 
 [node name="Camera" type="Camera2D"]
-position = Vector2(320, -164)
+position = Vector2(216, -120)
 zoom = Vector2(3, 3)
 process_callback = 0
 limit_bottom = 0

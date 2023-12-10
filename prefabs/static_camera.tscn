@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct16e8dplcrm1"]
+
+[ext_resource type="Script" path="res://scripts/static_camera.gd" id="1_cfodf"]
+
+[node name="StaticCamera" type="Camera2D"]
+zoom = Vector2(2, 2)
+script = ExtResource("1_cfodf")
